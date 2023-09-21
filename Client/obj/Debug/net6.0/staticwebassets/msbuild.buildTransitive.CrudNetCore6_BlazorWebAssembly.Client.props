@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\buildMultiTargeting\CrudNetCore6_BlazorWebAssembly.Client.props" />
+</Project>

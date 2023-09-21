@@ -1,0 +1,51 @@
+﻿@page "/fetchdata"
+@using CrudNetCore6_BlazorWebAssembly.Shared
+@inject HttpClient Http
+
+<PageTitle>Weather forecast</PageTitle>
+
+<h1>Weather forecast</h1>
+
+<p>This component demonstrates fetching data from the server.</p>
+
+@if (listaU == null)
+{
+    <p><em>cargando...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Correo</th>
+                <th>Telefono</th>
+                <th>F Alta</th>
+                <th>F Baja</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var u in listaU)
+            {
+                <tr>
+                    <td>@u.Nombre</td>
+                    <td>@u.Apellido</td>
+                    <td>@u.Email</td>
+                    <td>@u.Telefono</td>
+                     <td>@u.FechaAlta</td>
+                    <td>@u.FechaBaja</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private List<Usuario> listaU;
+
+    protected override async Task OnInitializedAsync()
+    {
+        listaU = await Http.GetFromJsonAsync<List<Usuario>>("api/Usuario");
+    }
+}

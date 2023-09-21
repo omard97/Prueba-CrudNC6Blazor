@@ -1,0 +1,11 @@
+C:\Users\omard\Desktop\Repaso Entrevista\CrudNetCore6_BlazorWebAssembly\Shared\bin\Debug\net6.0\CrudNetCore6_BlazorWebAssembly.Shared.deps.json
+C:\Users\omard\Desktop\Repaso Entrevista\CrudNetCore6_BlazorWebAssembly\Shared\bin\Debug\net6.0\CrudNetCore6_BlazorWebAssembly.Shared.dll
+C:\Users\omard\Desktop\Repaso Entrevista\CrudNetCore6_BlazorWebAssembly\Shared\bin\Debug\net6.0\CrudNetCore6_BlazorWebAssembly.Shared.pdb
+C:\Users\omard\Desktop\Repaso Entrevista\CrudNetCore6_BlazorWebAssembly\Shared\obj\Debug\net6.0\CrudNetCore6_BlazorWebAssembly.Shared.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\omard\Desktop\Repaso Entrevista\CrudNetCore6_BlazorWebAssembly\Shared\obj\Debug\net6.0\CrudNetCore6_BlazorWebAssembly.Shared.AssemblyInfoInputs.cache
+C:\Users\omard\Desktop\Repaso Entrevista\CrudNetCore6_BlazorWebAssembly\Shared\obj\Debug\net6.0\CrudNetCore6_BlazorWebAssembly.Shared.AssemblyInfo.cs
+C:\Users\omard\Desktop\Repaso Entrevista\CrudNetCore6_BlazorWebAssembly\Shared\obj\Debug\net6.0\CrudNetCore6_BlazorWebAssembly.Shared.csproj.CoreCompileInputs.cache
+C:\Users\omard\Desktop\Repaso Entrevista\CrudNetCore6_BlazorWebAssembly\Shared\obj\Debug\net6.0\CrudNetCore6_BlazorWebAssembly.Shared.dll
+C:\Users\omard\Desktop\Repaso Entrevista\CrudNetCore6_BlazorWebAssembly\Shared\obj\Debug\net6.0\refint\CrudNetCore6_BlazorWebAssembly.Shared.dll
+C:\Users\omard\Desktop\Repaso Entrevista\CrudNetCore6_BlazorWebAssembly\Shared\obj\Debug\net6.0\CrudNetCore6_BlazorWebAssembly.Shared.pdb
+C:\Users\omard\Desktop\Repaso Entrevista\CrudNetCore6_BlazorWebAssembly\Shared\obj\Debug\net6.0\ref\CrudNetCore6_BlazorWebAssembly.Shared.dll

@@ -1,0 +1,65 @@
+﻿@page "/"
+@using CrudNetCore6_BlazorWebAssembly.Shared;
+@inject HttpClient Http
+
+<h1>Lista de Usuarios</h1>
+
+<div class="row">
+    
+    <div class="col-md-6">
+        <a href="/usuario/nuevo" class="btn btn-primary" role="button">Nuevo Usuario</a>
+    </div>
+
+</div>
+
+
+@if(listaU == null)
+{
+    <p><sub>Cargando...</sub></p>
+}
+else
+{
+    <table class="table table-striped aling-middle table-bordered">
+        <thead class="table-success">
+            <tr>
+                
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Correo</th>
+                <th>Telefono</th>
+                <th>F Alta</th>
+                <th>F Baja</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var u in listaU)
+            {
+                <tr>
+                    <td>@u.Nombre</td>
+                    <td>@u.Apellido</td>
+                    <td>@u.Email</td>
+                    <td>@u.Telefono</td>
+                    <td>@u.FechaAlta</td>
+                    <td>@u.FechaBaja</td>
+                    <td> 
+                        <a href="/usuario/editar/@u.IdUsuario" class="btn btn-secondary" role="button"  >Editar</a>
+                        <a href="/usuario/borrar/@u.IdUsuario" class="btn btn-danger">Borrar</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+
+
+
+
+@code {
+    private List<Usuario> listaU;
+
+    protected override async Task OnInitializedAsync()
+    {
+        listaU = await Http.GetFromJsonAsync<List<Usuario>>("api/Usuario");
+    }
+}

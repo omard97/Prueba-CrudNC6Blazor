@@ -1,0 +1,57 @@
+﻿@page "/usuario/borrar/{iDUsuario:int}"
+@using CrudNetCore6_BlazorWebAssembly.Shared;
+@inject HttpClient Http
+@inject NavigationManager NavigationManager
+<h2 style="margin: 5px;">Borrar Usuario</h2>
+
+
+<div class="form-group">
+    <h4>¿Quieres Borrar este usuario?</h4>
+    <table class="table">
+        <tbody>
+            <tr>
+                <td>Nombre</td>
+                <td>@usuario.Nombre</td>
+            </tr>
+            <tr>
+                <td>Apellido</td>
+                <td>@usuario.Apellido</td>
+            </tr>
+            <tr>
+                <td>Email</td>
+                <td>@usuario.Email</td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="form-group">
+        <Input type="submit" value="Borrar" @onclick="(async() => await Borrar(usuario.IdUsuario)) " class="btn btn-primary" />
+        <Input type="submit" value="Cancelar" @onclick="(() => Cancel()) " class="btn btn-warning" />
+    </div>
+</div>
+
+
+
+
+
+
+@code {
+    [Parameter]
+    public int iDUsuario { get; set; }
+    Usuario usuario = new Usuario();
+    protected override async Task OnInitializedAsync()
+    {
+        //traigo el usuario que elegui
+        usuario = await Http.GetFromJsonAsync<Usuario>("api/Usuario/" + iDUsuario.ToString());
+    }
+
+    protected async Task Borrar (int id)
+    {
+        await Http.DeleteAsync("api/Usuario/" + id);
+        NavigationManager.NavigateTo("/");
+    }
+
+    void Cancel()
+    {
+        NavigationManager.NavigateTo("/");
+    }
+}

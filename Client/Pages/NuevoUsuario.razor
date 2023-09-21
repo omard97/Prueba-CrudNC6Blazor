@@ -1,0 +1,92 @@
+﻿
+@page "/usuario/nuevo"
+
+@page "/usuario/editar/{IdUsuario:int}"
+@using CrudNetCore6_BlazorWebAssembly.Shared;
+@inject HttpClient Http
+@inject NavigationManager NavigationManager
+
+<h1>@Titulo Usuario</h1>
+
+<EditForm Model="@usuario" OnValidSubmit="GuardarUsuario">
+    <DataAnnotationsValidator/>
+    <div class="mb-3">
+        <label for="Name" class="form-label">Nombre</label>
+        <div class="col-md-4">  
+            <InputText class="form-control" @bind-Value="usuario.Nombre"/>
+        </div>
+        <ValidationMessage For="@(()=> usuario.Nombre)"/>
+    </div>
+
+    <div class="mb-3">
+        <label for="Addres" class="form-label">Apellido</label>
+        <div class="col-md-4">
+            <InputText class="form-control" @bind-Value="usuario.Apellido"/>
+        </div>
+        <ValidationMessage For="@(()=> usuario.Apellido)"/>
+    </div>
+    <div class="mb-3">
+        <label for="Cellnumber" class="form-label">Teléfono</label>
+        <div class="col-md-4">
+            <InputText class="form-control" @bind-Value="usuario.Telefono"/>
+        </div>
+        <ValidationMessage For="@(()=> usuario.Telefono)"/>
+    </div>
+
+    <div class="mb-3">
+        <label for="Emailid" class="form-label">Email</label>
+        <div class="col-md-4">
+            <InputText class="form-control" @bind-Value="usuario.Email"/>
+        </div>
+        <ValidationMessage For="@(()=> usuario.Email)"/>
+    </div>
+
+   <div class="form-group">
+       <button type="submit" class="btn btn-primary">Guardar</button>
+        <button  class="btn btn-light" @onclick="Cancel">Cancelar</button>
+
+   </div>
+
+</EditForm>
+
+@code {
+    //Parametro para editar
+    [Parameter]
+    public int IdUsuario { get; set; }
+
+    protected string Titulo = "Nuevo";
+    //objeto usuario
+    protected Usuario usuario = new();
+
+    protected override async Task OnParametersSetAsync()
+    {
+        if(IdUsuario !=0)
+        {
+            Titulo = "Editar";
+            usuario = await Http.GetFromJsonAsync<Usuario>("api/usuario/" + IdUsuario.ToString());
+        }
+    }
+
+    protected async Task GuardarUsuario()
+    {
+
+        if(usuario.IdUsuario != 0 )
+        {
+            //Actualizar usuario
+            await Http.PutAsJsonAsync("api/Usuario", usuario);
+        }
+        else
+        {
+            //peticion post para el back
+            await Http.PostAsJsonAsync("api/Usuario", usuario);
+        }
+        Cancel();
+
+    }
+
+    public void Cancel()
+    {
+        NavigationManager.NavigateTo("/");
+    }
+
+}
